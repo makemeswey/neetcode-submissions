@@ -1,0 +1,18 @@
+class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
+        result = []
+
+        def backtrack(s, left, right):
+            if left == n and right == n:
+                result.append(s)
+                return 
+            
+            if left != n:
+                backtrack(s + "(", left + 1, right)
+            
+            if left > right:
+                backtrack(s + ")", left, right + 1)
+
+        
+        backtrack("", 0, 0)
+        return result
